@@ -30,27 +30,27 @@ ros2 launch yolo_racecar_detector yolo_racecar_detector.launch.py
 
 ### Input
 
-| Name         | Type                  | Description  |
-| ------------ | --------------------- | ------------ |
-| `topic_name` | std_msgs::msg::String | Sample desc. |
+| Name       | Type                | Description     |
+| ---------- | ------------------- | --------------- |
+| `in/image` | `sensor_msgs/Image` | The input image |
 
 ### Output
 
-| Name         | Type                  | Description  |
-| ------------ | --------------------- | ------------ |
-| `topic_name` | std_msgs::msg::String | Sample desc. |
+| Name          | Type                                               | Description                                        |
+| ------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `out/objects` | `tier4_perception_msgs/DetectedObjectsWithFeature` | The detected objects with 2D bounding boxes        |
+| `out/image`   | `sensor_msgs/Image`                                | The image with 2D bounding boxes for visualization |
 
-### Services and Actions
-
-| Name           | Type                   | Description  |
-| -------------- | ---------------------- | ------------ |
-| `service_name` | std_srvs::srv::Trigger | Sample desc. |
 
 ### Parameters
 
 | Name         | Type | Description  |
 | ------------ | ---- | ------------ |
-| `param_name` | int  | Sample desc. |
+| `onnx_model_path` | string  | relative path to yolo model in onnx     format |
+| `trt_engine_path` | string | relative path to trt engine (will be generated if does not exist)|
+|`confidendce_threshold` | float | If car detection confidence score is less than this value, the object is ignored.|
+|`nms_threshold` | float | The IoU threshold for Non-maximum Suppression|
+
 
 
 ## References / External links
