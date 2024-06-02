@@ -1,5 +1,6 @@
 # yolo_racecar_detector
 <!-- Required -->
+This is the ROS2 package used to detect f1tenth cars on the image captured from the camera. The inference is done using the [TensorRT](https://developer.nvidia.com/tensorrt) engine based on the yolov8 architecture model. The method of performing the inference was inspired by [zed-custom-detector](https://github.com/stereolabs/zed-sdk/tree/master/object%20detection/custom%20detector/cpp/tensorrt_yolov5-v6-v8_onnx) and adapted for use with ROS2 and OpenCV.
 <!-- Package description -->
 
 ## Installation
@@ -55,3 +56,8 @@ ros2 launch yolo_racecar_detector yolo_racecar_detector.launch.py
 
 ## References / External links
 <!-- Optional -->
+[tier4_autoware_msgs](https://github.com/tier4/tier4_autoware_msgs) 
+
+[ZED - custom detector](https://github.com/stereolabs/zed-sdk/tree/master/object%20detection/custom%20detector/cpp/tensorrt_yolov5-v6-v8_onnx) 
+
+
