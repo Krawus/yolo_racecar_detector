@@ -30,10 +30,9 @@ namespace yolo_racecar_detector
 class YOLO_RACECAR_DETECTOR_PUBLIC YoloRacecarDetector
 {
 public:
-  static const int CAR_LABEL_ID = 2;
+  static const int CAR_LABEL_ID = 0;
 
   YoloRacecarDetector(const std::string& onnx_path, const std::string& engine_path, const float& confidence_threshold, const float& nms_threshold_);
-  int64_t foo(int64_t bar);
   bool engineExists(const std::string& engine_path);
 
   std::vector<BBoxInfo> runInference(cv::Mat& img);

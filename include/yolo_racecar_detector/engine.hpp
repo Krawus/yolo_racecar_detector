@@ -77,6 +77,11 @@ struct OptimDim {
         tensor_name = v_.front();
         return false;
     }
+
+    void print_info() {
+        std::cout << "Tensor name: " << tensor_name << std::endl;
+        std::cout << "Size: " << size.d[0] << "x" << size.d[1] << "x" << size.d[2] << "x" << size.d[3] << std::endl;
+    }
 };
 
 class Engine {

@@ -33,10 +33,6 @@ YoloRacecarDetectorNode::YoloRacecarDetectorNode(const rclcpp::NodeOptions & opt
   camera_img_sub_ = this->create_subscription<sensor_msgs::msg::Image>("/in/image", camera_img_sub_qos, 
                                               std::bind(&YoloRacecarDetectorNode::cameraImgCallback, this, std::placeholders::_1));
 
-  // for remapping
-    // camera_img_sub_ = this->create_subscription<sensor_msgs::msg::Image>("camera_img_topic", 10, 
-  //                                             std::bind(&YoloRacecarDetectorNode::cameraImgCallback, this, std::placeholders::_1));
-
   detected_cars_pub_ = this->create_publisher<tier4_perception_msgs::msg::DetectedObjectsWithFeature>("out/objects", 10);
   image_with_bboxes_pub_ = this->create_publisher<sensor_msgs::msg::Image>("/out/image", 10);
 
@@ -55,7 +51,7 @@ YoloRacecarDetectorNode::YoloRacecarDetectorNode(const rclcpp::NodeOptions & opt
     object_with_feature.feature.roi.y_offset = bbox.box.y1;
     object_with_feature.object.existence_probability = bbox.prob;
 
-    std::cout << "DETECTED CAR WITH PROB: " << bbox.prob << std::endl;
+    std::cout << "DETECTED RACECAR WITH PROB: " << bbox.prob << std::endl;
     objects_with_feature_msg.feature_objects.push_back(object_with_feature);
   }
 

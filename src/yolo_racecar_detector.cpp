@@ -34,11 +34,16 @@ YoloRacecarDetector::YoloRacecarDetector(const std::string& onnx_path, const std
 
   confidence_threshold_ = confidence_threshold;
   nms_threshold_ = nms_threshold;
+  std::cout << "model path: " << onnx_path << std::endl;
   
   if (!engineExists(engine_path)){
     std::cout << "ENGINE FILE NOT FOUND. GENERATING..." << std::endl;
     OptimDim dyn_dim_profile;
+    dyn_dim_profile.tensor_name = "images";
+    dyn_dim_profile.size = nvinfer1::Dims4{1, 3, 480, 640};
+
     trt_engine_.build_engine(onnx_path, engine_path, dyn_dim_profile);
+
     if (!engineExists(engine_path)){
       std::cerr << "FAILED TO GENERATE ENGINE" << std::endl;
       std::cerr << "Shutting down..." << std::endl;
@@ -62,11 +67,6 @@ YoloRacecarDetector::YoloRacecarDetector(const std::string& onnx_path, const std
 }
 
 
-int64_t YoloRacecarDetector::foo(int64_t bar)
-{  
-  return bar;
-}
-
 bool YoloRacecarDetector::engineExists(const std::string& enginePath)
 {
   std::fstream f(enginePath.c_str());
@@ -75,7 +75,7 @@ bool YoloRacecarDetector::engineExists(const std::string& enginePath)
 
 std::vector<BBoxInfo> YoloRacecarDetector::runInference(cv::Mat& img)
 {
-  img = cv::imread("/home/krawus/autoware/src/yolo_perception/yolo_racecar_detector/img.jpg", cv::IMREAD_COLOR);
+  // img = cv::imread("/home/krawus/autoware/src/yolo_perception/yolo_racecar_detector/img.jpg", cv::IMREAD_COLOR);
   cv::Mat resized_img;
   cv::resize(img, resized_img, cv::Size(img.cols / 2, img.rows / 2));
 
