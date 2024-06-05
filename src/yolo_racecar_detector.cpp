@@ -75,7 +75,6 @@ bool YoloRacecarDetector::engineExists(const std::string& enginePath)
 
 std::vector<BBoxInfo> YoloRacecarDetector::runInference(cv::Mat& img)
 {
-  // img = cv::imread("/home/krawus/autoware/src/yolo_perception/yolo_racecar_detector/img.jpg", cv::IMREAD_COLOR);
   cv::Mat resized_img;
   cv::resize(img, resized_img, cv::Size(img.cols / 2, img.rows / 2));
 
