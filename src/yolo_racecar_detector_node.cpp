@@ -51,7 +51,6 @@ YoloRacecarDetectorNode::YoloRacecarDetectorNode(const rclcpp::NodeOptions & opt
     object_with_feature.feature.roi.y_offset = bbox.box.y1;
     object_with_feature.object.existence_probability = bbox.prob;
 
-    std::cout << "DETECTED RACECAR WITH PROB: " << bbox.prob << std::endl;
     objects_with_feature_msg.feature_objects.push_back(object_with_feature);
   }
 
