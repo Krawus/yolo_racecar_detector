@@ -1,3 +1,2 @@
 .vscode
 engines/*.trt
-models/*.onnx
